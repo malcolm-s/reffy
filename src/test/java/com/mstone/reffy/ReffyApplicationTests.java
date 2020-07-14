@@ -10,7 +10,6 @@ class ReffyApplicationTests {
 
 	@Test
 	void contextLoads() {
-		assertTrue(false, "no!");
 	}
 
 }
