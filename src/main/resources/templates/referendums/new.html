@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Referendum - Reffy</title>
+  </head>
+  <body>
+    <h1>New Referendum</h1>
+    <form th:action="@{/referendums/new}" th:object="${vm}" method="post">
+      <div>
+        <label for="question">Question:</label>
+        <input id="question" type="text" th:field="*{question}" />
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" th:field="*{description}" />
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </body>
+</html>

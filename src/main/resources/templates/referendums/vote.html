@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="'Vote for: ' + ${referendum.question} + ' - Reffy'">
+      Vote for: When will we rejoin the EU? - Reffy
+    </title>
+  </head>
+  <body>
+    <h1 th:text="'Cast your vote for: ' + ${referendum.question}">
+      Cast your vote for: When will we rejoin the EU?
+    </h1>
+    <p th:text="${referendum.description}">
+      For a number of reasons we want to rejoin the EU.
+    </p>
+    <div>
+      <form
+        th:action="@{/referendums/{id}/vote(id=${referendum.id})}"
+        th:object="${vm}"
+        method="post"
+      >
+        <div>
+          <label th:for="choice_for">For</label>
+          <input
+            id="choice_for"
+            type="radio"
+            th:field="*{choice}"
+            th:value="FOR"
+          />
+        </div>
+        <div>
+          <label th:for="choice_against">Against</label>
+          <input
+            id="choice_against"
+            type="radio"
+            th:field="*{choice}"
+            th:value="AGAINST"
+          />
+        </div>
+
+        <button type="submit">Vote</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${referendum.question} + ' - Reffy'">
+      New Referendum - Reffy
+    </title>
+  </head>
+  <body>
+    <h1 th:text="${referendum.question}">When will we rejoin the EU?</h1>
+    <p th:text="${referendum.description}">
+      For a number of reasons we want to rejoin the EU.
+    </p>
+
+    <p>Cast your vote <a th:href="@{/referendums/{id}/vote(id=${referendum.id})}">here</a></p>
+
+    <h2>Current standings:</h2>
+    <div>Total votes: <span th:text="${referendum.totalVotes()}">155</span></div>
+
+    <div>For: <span th:text="${referendum.votesForCount}">120</span> votes</div>
+    <div>Against: <span th:text="${referendum.votesAgainstCount}">35</span> votes</div>
+    <p>View more <a th:href="@{/}">referendums</a></p>
+  </body>
+</html>
