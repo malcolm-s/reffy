@@ -26,7 +26,7 @@ import lombok.ToString;
 @ToString
 public class Referendum {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
   @Column
