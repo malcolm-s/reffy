@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.mstone.reffy.referendum.Referendum;
@@ -28,6 +29,8 @@ public class Vote {
   private int id;
 
   @ManyToOne
+  @JoinColumn(name = "referendum_id", nullable = false)
+  @ToString.Exclude
   private Referendum referendum;
 
   @Enumerated(EnumType.STRING)

@@ -36,13 +36,13 @@ public class Referendum {
   @Lob
   private String description;
 
-  @OneToMany
+  @OneToMany(mappedBy = "referendum")
   @ToString.Exclude
   private Collection<Vote> votes;
 
   @Column
   private long votesForCount;
-  
+
   @Column
   private long votesAgainstCount;
 
