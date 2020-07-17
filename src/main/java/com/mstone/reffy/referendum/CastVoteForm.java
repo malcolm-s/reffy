@@ -5,6 +5,6 @@ import com.mstone.reffy.vote.VoteChoice;
 import lombok.Data;
 
 @Data
-public class CastVoteViewModel {
+public class CastVoteForm {
   private VoteChoice choice;
 }

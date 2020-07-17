@@ -22,7 +22,7 @@ public class ReferendumService {
     this.voteService = voteService;
   }
 
-  public Referendum saveReferendum(NewReferendumViewModel vm) {
+  public Referendum saveReferendum(NewReferendumForm vm) {
     var referendum = new Referendum();
     referendum.setQuestion(vm.getQuestion());
     referendum.setDescription(vm.getDescription());
@@ -37,7 +37,7 @@ public class ReferendumService {
     return referendum;
   }
 
-  public void voteFor(Referendum referendum, CastVoteViewModel vm) {
+  public void voteFor(Referendum referendum, CastVoteForm vm) {
     log.info("voting on referendum: {}, {}", referendum, vm);
 
     var vote = voteService.saveVote(referendum, vm.getChoice());

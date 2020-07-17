@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class ReferendumsController {
   private final ReferendumService referendumService;
   private final ReferendumRepository referendums;
@@ -22,12 +25,13 @@ public class ReferendumsController {
 
   @GetMapping("/referendums/new")
   public String newReferendum(Model model) {
-    model.addAttribute("vm", new NewReferendumViewModel());
+    model.addAttribute("vm", new NewReferendumForm());
     return "referendums/new";
   }
 
   @PostMapping("/referendums/new")
-  public ModelAndView makeNewReferendum(@ModelAttribute NewReferendumViewModel vm, Model model) {
+  public ModelAndView makeNewReferendum(@ModelAttribute NewReferendumForm vm, Model model) {
+    log.info("vm: {}", vm);
     var referendum = referendumService.saveReferendum(vm);
     model.addAttribute("id", referendum.getId());
     return new ModelAndView("redirect:/referendums/{id}", model.asMap());
@@ -53,7 +57,7 @@ public class ReferendumsController {
     if (referendum.isPresent()) {
       model.addAttribute("referendum", referendum.get());
 
-      var vm = new CastVoteViewModel();
+      var vm = new CastVoteForm();
       model.addAttribute("vm", vm);
 
     } else {
@@ -64,7 +68,7 @@ public class ReferendumsController {
   }
 
   @PostMapping("/referendums/{id}/vote")
-  public ModelAndView vote(@PathVariable Integer id, Model model, CastVoteViewModel vm) {
+  public ModelAndView vote(@PathVariable Integer id, Model model, CastVoteForm vm) {
     var referendum = referendums.findById(id);
 
     if (referendum.isPresent()) {

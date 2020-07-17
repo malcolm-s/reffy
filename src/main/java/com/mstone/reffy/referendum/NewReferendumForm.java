@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 @Data
-public class NewReferendumViewModel {
+public class NewReferendumForm {
   private String question;
   private String description;
   @DateTimeFormat(pattern = "yyyy-MM-dd")
