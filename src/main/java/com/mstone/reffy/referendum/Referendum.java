@@ -1,5 +1,6 @@
 package com.mstone.reffy.referendum;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -47,10 +48,18 @@ public class Referendum {
   private long votesAgainstCount;
 
   @CreationTimestamp
+  @Column
   private LocalDateTime created;
-
+  
   @UpdateTimestamp
+  @Column
   private LocalDateTime updated;
+
+  @Column
+  private LocalDate votingOpens;
+  
+  @Column
+  private LocalDate votingCloses;
 
   public int totalVotes() {
     return this.votes.size();

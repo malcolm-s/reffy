@@ -26,6 +26,8 @@ public class ReferendumService {
     var referendum = new Referendum();
     referendum.setQuestion(vm.getQuestion());
     referendum.setDescription(vm.getDescription());
+    referendum.setVotingOpens(vm.getVotingOpens());
+    referendum.setVotingCloses(vm.getVotingCloses());
     referendums.save(referendum);
 
     emailService.sendNewReferendumEmail(referendum);

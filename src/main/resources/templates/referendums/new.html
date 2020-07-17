@@ -17,6 +17,14 @@
         <textarea id="description" th:field="*{description}" />
       </div>
       <div>
+        <label for="votingOpens">Voting opens:</label>
+        <input type="date" id="votingOpens" th:field="*{votingOpens}" />
+      </div>
+      <div>
+        <label for="votingCloses">Voting closes:</label>
+        <input type="date" id="votingCloses" th:field="*{votingCloses}" />
+      </div>
+      <div>
         <button type="submit">Submit</button>
       </div>
     </form>
