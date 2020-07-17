@@ -2,6 +2,8 @@ Ideas
 - more models
 - thymeleaf layouts
 - form validation
+- scheduled tasks
+- test coverage
 
 Interesting ideas
 - caching
@@ -16,5 +18,4 @@ Meh ideas
 - css (tailwind?)
 
 Frustrating waste of time
-- mysql
 - migrations
