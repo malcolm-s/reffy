@@ -17,6 +17,9 @@
       There are <strong th:text="${referendumCount}">12</strong> referendums to
       vote on.
     </p>
+    <div>
+      <a th:each="category : ${categories}" th:text="${category.name}" th:href="@{/(categoryId=${category.id})}">Immigration</a>
+    </div>
     <ul>
       <li th:each="ref : ${referendums}">
         <h2 th:text="${ref.question}">What about this thing?</h2>
