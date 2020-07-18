@@ -1,7 +1,6 @@
 Ideas
 - more models
 - thymeleaf layouts
-- scheduled tasks
 - test coverage
 
 Interesting ideas
@@ -14,10 +13,11 @@ Maybe useful ideas
 - authentication
 
 Meh ideas
-- css (tailwind?)
+- css (tailwind?) (black and white) (text heavy)
 
 Frustrating waste of time
 - migrations
 
 Done
+- scheduled tasks
 - form validation

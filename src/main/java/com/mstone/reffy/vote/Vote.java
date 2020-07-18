@@ -37,5 +37,5 @@ public class Vote {
   private VoteChoice choice;
 
   @CreationTimestamp
-  private LocalDateTime createDateTime;
+  private LocalDateTime created;
 }
