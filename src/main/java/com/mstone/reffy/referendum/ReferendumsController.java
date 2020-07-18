@@ -1,8 +1,11 @@
 package com.mstone.reffy.referendum;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,8 +33,11 @@ public class ReferendumsController {
   }
 
   @PostMapping("/referendums/new")
-  public ModelAndView makeNewReferendum(@ModelAttribute NewReferendumForm vm, Model model) {
-    log.info("vm: {}", vm);
+  public ModelAndView makeNewReferendum(@ModelAttribute("vm") @Valid NewReferendumForm vm, BindingResult binding,
+      Model model) {
+    if (binding.hasErrors()) {
+      return new ModelAndView("referendums/new", model.asMap());
+    }
     var referendum = referendumService.saveReferendum(vm);
     model.addAttribute("id", referendum.getId());
     return new ModelAndView("redirect:/referendums/{id}", model.asMap());
