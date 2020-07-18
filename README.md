@@ -1,7 +1,6 @@
 Ideas
 - more models
 - thymeleaf layouts
-- form validation
 - scheduled tasks
 - test coverage
 
@@ -19,3 +18,6 @@ Meh ideas
 
 Frustrating waste of time
 - migrations
+
+Done
+- form validation
