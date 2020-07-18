@@ -12,15 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.server.ResponseStatusException;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Controller
-@Slf4j
 public class CategoryController {
   private final CategoryRepository categories;
+  private final CategoryService categoryService;
 
-  public CategoryController(CategoryRepository categories) {
+  public CategoryController(CategoryRepository categories, CategoryService categoryService) {
     this.categories = categories;
+    this.categoryService = categoryService;
   }
 
   @GetMapping("/categories")
@@ -39,9 +38,7 @@ public class CategoryController {
     if (binding.hasErrors()) {
       return "category/new";
     }
-    var category = new Category();
-    category.setName(vm.getName());
-    categories.save(category);
+    categoryService.saveCategory(vm);
     return "redirect:/categories";
   }
 
@@ -66,9 +63,7 @@ public class CategoryController {
       if (binding.hasErrors()) {
         return "category/edit";
       }
-      var toUpdate = category.get();
-      toUpdate.setName(vm.getName());
-      categories.save(toUpdate);
+      categoryService.editCategory(category.get(), vm);
       return "redirect:/categories";
     } else {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND);
