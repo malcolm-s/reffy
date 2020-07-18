@@ -74,10 +74,15 @@ public class ReferendumsController {
   }
 
   @PostMapping("/referendums/{id}/vote")
-  public ModelAndView vote(@PathVariable Integer id, Model model, CastVoteForm vm) {
+  public ModelAndView vote(@PathVariable Integer id, Model model, @ModelAttribute("vm") @Valid CastVoteForm vm,
+      BindingResult binding) {
     var referendum = referendums.findById(id);
 
     if (referendum.isPresent()) {
+      if (binding.hasErrors()) {
+        model.addAttribute("referendum", referendum.get());
+        return new ModelAndView("referendums/vote", model.asMap());
+      }
       referendumService.voteFor(referendum.get(), vm);
       return new ModelAndView("redirect:/referendums/{id}", model.asMap());
     } else {

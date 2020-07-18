@@ -38,7 +38,12 @@
             th:value="AGAINST"
           />
         </div>
-
+        <div
+          th:if="${#fields.hasErrors('choice')}"
+          th:errors="*{choice}"
+        >
+          choice errors
+        </div>
         <button type="submit">Vote</button>
       </form>
     </div>
