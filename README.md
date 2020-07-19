@@ -1,16 +1,16 @@
 Ideas
 - more models
 - thymeleaf layouts
-- test coverage
+- authentication
 
 Interesting ideas
 - caching
 
 Maybe useful ideas
 - background jobs
+- message queue / spring integration
 - tests
-- message queue
-- authentication
+- test coverage
 
 Meh ideas
 - css (tailwind?) (black and white) (text heavy)
