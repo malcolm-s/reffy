@@ -1,6 +1,5 @@
 Ideas
 - more models
-- thymeleaf layouts
 - authentication
 
 Interesting ideas
@@ -21,3 +20,4 @@ Frustrating waste of time
 Done
 - scheduled tasks
 - form validation
+- thymeleaf layouts
