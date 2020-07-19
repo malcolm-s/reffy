@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,6 +25,13 @@ public class ReferendumsController {
   public ReferendumsController(ReferendumService referendumService, ReferendumRepository referendumRepository) {
     this.referendumService = referendumService;
     this.referendums = referendumRepository;
+  }
+
+  @GetMapping("/referendums")
+  public String index(Model model, @RequestParam(required = false) Integer categoryId) {
+    log.info("categoryId: {}", categoryId);
+    model.addAttribute("referendums", referendums.findAll());
+    return "referendums/index";
   }
 
   @GetMapping("/referendums/new")
