@@ -17,25 +17,35 @@
         to vote on.
       </p>
       <div>
-        <a
-          th:each="category : ${categories}"
-          th:text="${category.name}"
-          th:href="@{/(categoryId=${category.id})}"
-          >Immigration</a
-        >
+        <h2>The latest</h2>
+        <ul>
+          <li th:each="ref : ${referendums}">
+            <h3 th:text="${ref.question}">What about this thing?</h3>
+            <p th:text="${ref.description}">A wonderful description</p>
+            <em
+              ><a th:href="@{/referendums/{id}(id=${ref.id})}"
+                >Read more...</a
+              ></em
+            >
+          </li>
+        </ul>
       </div>
-      <ul>
-        <li th:each="ref : ${referendums}">
-          <h2 th:text="${ref.question}">What about this thing?</h2>
-          <p th:text="${ref.description}">A wonderful description</p>
-          <em
-            ><a th:href="@{/referendums/{id}(id=${ref.id})}"
-              >Read more...</a
-            ></em
-          >
-        </li>
-      </ul>
-      <p>Make a <a th:href="@{/referendums/new}">new referendum</a></p>
+      <div>
+        <h2>What matters to you?</h2>
+        <ul>
+          <li th:each="category : ${categories}">
+            <a
+              th:text="${category.name}"
+              th:href="@{/referendums(categoryId=${category.id})}"
+              >Immigration</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2>Let your voice be heard</h2>
+        <p>Submit a <a th:href="@{/referendums/new}">new referendum</a></p>
+      </div>
     </div>
   </body>
 </html>
