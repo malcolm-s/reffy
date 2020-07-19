@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE">Reffy</title>
+  </head>
+  <body>
+    <div>Header with logo and navigation</div>
+    <!-- <div th:replace="fragments/header :: header">
+      Header
+    </div> -->
+
+    <div layout:fragment="content"></div>
+
+    <div>Footer with links and stuff</div>
+    <!-- <div th:replace="fragments/footer :: footer">
+      Footer
+    </div> -->
+  </body>
+</html>
