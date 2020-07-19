@@ -1,23 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<html layout:decorate="~{default}">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Category - Reffy</title>
+    <title>Edit Category</title>
   </head>
   <body>
-    <h1>Edit Category</h1>
-    <form th:object="${vm}" method="post">
-      <div>
-        <label for="name">Name:</label>
-        <input id="name" type="text" th:field="*{name}" />
-        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
-          name errors
+    <div layout:fragment="content">
+      <h1>Edit Category</h1>
+      <form th:object="${vm}" method="post">
+        <div>
+          <label for="name">Name:</label>
+          <input id="name" type="text" th:field="*{name}" />
+          <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+            name errors
+          </div>
         </div>
-      </div>
-      <div>
-        <button type="submit">Submit</button>
-      </div>
-    </form>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
