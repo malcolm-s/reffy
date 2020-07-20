@@ -27,11 +27,6 @@ public class NewReferendumController {
     this.categories = categories;
   }
 
-  @ModelAttribute("categories")
-  public Collection<Category> categories() {
-    return categories.findAll();
-  }
-
   @GetMapping
   public String newReferendum(@ModelAttribute("vm") NewReferendumForm vm) {
     return "referendums/new";
@@ -46,5 +41,10 @@ public class NewReferendumController {
     var referendum = referendumService.saveReferendum(vm);
     model.addAttribute("id", referendum.getId());
     return new ModelAndView("redirect:/referendums/{id}", model.asMap());
+  }
+
+  @ModelAttribute("categories")
+  private Collection<Category> categories() {
+    return categories.findAll();
   }
 }
