@@ -35,8 +35,7 @@ public class ReferendumsController {
   }
 
   @GetMapping("/referendums/new")
-  public String newReferendum(Model model) {
-    model.addAttribute("vm", new NewReferendumForm());
+  public String newReferendum(Model model, @ModelAttribute("vm") NewReferendumForm vm) {
     return "referendums/new";
   }
 
