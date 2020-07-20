@@ -45,6 +45,18 @@
           </div>
         </div>
         <div>
+          <label for="categories">Categories:</label>
+          <select th:field="*{categories}" multiple>
+            <option
+              th:each="cat : ${categories}"
+              th:value="${cat.id}"
+              th:text="${cat.name}"
+              th:selected="${vm.categories.contains(cat)}"
+            >
+            </option>
+          </select>
+        </div>
+        <div>
           <button type="submit">Submit</button>
         </div>
       </form>

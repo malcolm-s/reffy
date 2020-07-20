@@ -47,7 +47,6 @@
         <div>
           <label for="categories">Categories:</label>
           <select th:field="*{categories}" multiple>
-            <option value="">Select Category</option>
             <option
               th:each="cat : ${categories}"
               th:value="${cat.id}"

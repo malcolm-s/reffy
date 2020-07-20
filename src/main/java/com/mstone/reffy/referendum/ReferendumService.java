@@ -43,6 +43,7 @@ public class ReferendumService {
     referendum.setDescription(vm.getDescription());
     referendum.setVotingOpens(vm.getVotingOpens());
     referendum.setVotingCloses(vm.getVotingCloses());
+    referendum.setCategories(vm.getCategories());
     return referendums.save(referendum);
   }
 

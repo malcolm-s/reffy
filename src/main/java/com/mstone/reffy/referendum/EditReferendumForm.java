@@ -1,9 +1,12 @@
 package com.mstone.reffy.referendum;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import com.mstone.reffy.category.Category;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -24,4 +27,6 @@ public class EditReferendumForm {
   @NotNull
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate votingCloses;
+
+  private Collection<Category> categories;
 }

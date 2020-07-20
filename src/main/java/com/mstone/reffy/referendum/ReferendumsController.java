@@ -2,6 +2,8 @@ package com.mstone.reffy.referendum;
 
 import javax.validation.Valid;
 
+import com.mstone.reffy.category.CategoryRepository;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +23,12 @@ import lombok.extern.slf4j.Slf4j;
 public class ReferendumsController {
   private final ReferendumService referendumService;
   private final ReferendumRepository referendums;
+  private final CategoryRepository categories;
 
-  public ReferendumsController(ReferendumService referendumService, ReferendumRepository referendumRepository) {
+  public ReferendumsController(ReferendumService referendumService, ReferendumRepository referendumRepository, CategoryRepository categories) {
     this.referendumService = referendumService;
     this.referendums = referendumRepository;
+    this.categories = categories;
   }
 
   @GetMapping("/referendums")
@@ -50,10 +54,12 @@ public class ReferendumsController {
   @GetMapping("/referendums/{id}/edit")
   public String edit(@PathVariable Integer id, Model model, @ModelAttribute("vm") EditReferendumForm vm) {
     return referendums.findById(id).map(r -> {
+      model.addAttribute("categories", categories.findAll());
       vm.setQuestion(r.getQuestion());
       vm.setDescription(r.getDescription());
       vm.setVotingOpens(r.getVotingOpens());
       vm.setVotingCloses(r.getVotingCloses());
+      vm.setCategories(r.getCategories());
       return "referendums/edit";
     }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
   }
