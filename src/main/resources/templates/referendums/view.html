@@ -12,6 +12,11 @@
         For a number of reasons we want to rejoin the EU.
       </p>
 
+      <h2>Categories</h2>
+      <ul>
+        <li th:each="cat : ${referendum.categories}" th:text="${cat.name}"></li>
+      </ul>
+
       <p>
         Cast your vote
         <a th:href="@{/referendums/{id}/vote(id=${referendum.id})}">here</a>
@@ -28,6 +33,7 @@
       <div>
         Against: <span th:text="${referendum.votesAgainstCount}">35</span> votes
       </div>
+
       <p><a th:href="@{/referendums/{id}/edit(id=${referendum.id})}">Edit</a> this referendum</p>
       <p>View more <a th:href="@{/}">referendums</a></p>
     </div>
