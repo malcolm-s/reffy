@@ -1,6 +1,7 @@
 Ideas
 - more models
 - authentication
+- transactions
 
 Interesting ideas
 - caching
