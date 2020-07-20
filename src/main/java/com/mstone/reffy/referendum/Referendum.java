@@ -9,9 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.mstone.reffy.category.Category;
 import com.mstone.reffy.vote.Vote;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -60,6 +64,11 @@ public class Referendum {
   
   @Column
   private LocalDate votingCloses;
+
+  @ManyToMany
+  @JoinTable(joinColumns = {
+    @JoinColumn(name = "referendum_id", referencedColumnName = "id", nullable = false, updatable = false) }, inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false, updatable = false))
+  private Collection<Category> categories;
 
   public int totalVotes() {
     return this.votes.size();

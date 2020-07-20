@@ -28,6 +28,7 @@ public class ReferendumService {
     referendum.setDescription(vm.getDescription());
     referendum.setVotingOpens(vm.getVotingOpens());
     referendum.setVotingCloses(vm.getVotingCloses());
+    referendum.setCategories(vm.getCategories());
     referendums.save(referendum);
 
     emailService.sendNewReferendumEmail(referendum);
