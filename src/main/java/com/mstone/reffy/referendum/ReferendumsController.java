@@ -1,5 +1,7 @@
 package com.mstone.reffy.referendum;
 
+import java.util.function.Supplier;
+
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -63,21 +65,27 @@ public class ReferendumsController {
     return "referendums/view";
   }
 
-  @GetMapping("/referendums/{id}/vote")
-  public String vote(@PathVariable Integer id, Model model) {
-    var referendum = referendums.findById(id);
+  @GetMapping("/referendums/{id}/edit")
+  public String edit(@PathVariable Integer id, Model model, @ModelAttribute("vm") EditReferendumForm vm) {
+    return referendums.findById(id).map(r -> {
+      vm.setQuestion(r.getQuestion());
+      vm.setDescription(r.getDescription());
+      vm.setVotingOpens(r.getVotingOpens());
+      vm.setVotingCloses(r.getVotingCloses());
+      return "referendums/edit";
+    }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+  }
 
-    if (referendum.isPresent()) {
-      model.addAttribute("referendum", referendum.get());
-
-      var vm = new CastVoteForm();
-      model.addAttribute("vm", vm);
-
-    } else {
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+  @PostMapping("/referendums/{id}/edit")
+  public String doEdit(@PathVariable Integer id, Model model, @ModelAttribute("vm") @Valid EditReferendumForm vm,
+      BindingResult binding) {
+    if (binding.hasErrors()) {
+      return "referendums/edit";
     }
-
-    return "referendums/vote";
+    return referendums.findById(id).map(r -> {
+      referendumService.editReferendum(r, vm);
+      return "redirect:/referendums/{id}";
+    }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
   }
 
   @PostMapping("/referendums/{id}/vote")

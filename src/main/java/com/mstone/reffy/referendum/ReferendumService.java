@@ -37,6 +37,14 @@ public class ReferendumService {
     return referendum;
   }
 
+  public Referendum editReferendum(Referendum referendum, EditReferendumForm vm) {
+    referendum.setQuestion(vm.getQuestion());
+    referendum.setDescription(vm.getDescription());
+    referendum.setVotingOpens(vm.getVotingOpens());
+    referendum.setVotingCloses(vm.getVotingCloses());
+    return referendums.save(referendum);
+  }
+
   public void voteFor(Referendum referendum, CastVoteForm vm) {
     log.info("voting on referendum: {}, {}", referendum, vm);
 
@@ -46,7 +54,7 @@ public class ReferendumService {
 
   private void updateVoteCount(Referendum referendum, Vote vote) {
     referendum.getVotes().add(vote);
-    
+
     if (vote.getChoice().equals(VoteChoice.FOR)) {
       referendum.setVotesForCount(referendum.getVotesForCount() + 1);
     } else {

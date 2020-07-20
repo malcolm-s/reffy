@@ -28,6 +28,7 @@
       <div>
         Against: <span th:text="${referendum.votesAgainstCount}">35</span> votes
       </div>
+      <p><a th:href="@{/referendums/{id}/edit(id=${referendum.id})}">Edit</a> this referendum</p>
       <p>View more <a th:href="@{/}">referendums</a></p>
     </div>
   </body>

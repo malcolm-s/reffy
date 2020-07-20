@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html layout:decorate="~{default}">
+  <head>
+    <title>Edit Referendum</title>
+  </head>
+  <body>
+    <div layout:fragment="content">
+      <h1>Edit Referendum</h1>
+      <form th:object="${vm}" method="post">
+        <div>
+          <label for="question">Question:</label>
+          <input id="question" type="text" th:field="*{question}" />
+          <div th:if="${#fields.hasErrors('question')}" th:errors="*{question}">
+            question errors
+          </div>
+        </div>
+        <div>
+          <label for="description">Description:</label>
+          <textarea id="description" th:field="*{description}" />
+          <div
+            th:if="${#fields.hasErrors('description')}"
+            th:errors="*{description}"
+          >
+            description errors
+          </div>
+        </div>
+        <div>
+          <label for="votingOpens">Voting opens:</label>
+          <input type="date" id="votingOpens" th:field="*{votingOpens}" />
+          <div
+            th:if="${#fields.hasErrors('votingOpens')}"
+            th:errors="*{votingOpens}"
+          >
+            votingOpens errors
+          </div>
+        </div>
+        <div>
+          <label for="votingCloses">Voting closes:</label>
+          <input type="date" id="votingCloses" th:field="*{votingCloses}" />
+          <div
+            th:if="${#fields.hasErrors('votingCloses')}"
+            th:errors="*{votingCloses}"
+          >
+            votingCloses errors
+          </div>
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
