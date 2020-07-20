@@ -70,6 +70,23 @@ public class ReferendumsController {
     }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
   }
 
+  @GetMapping("/referendums/{id}/vote")
+  public String vote(@PathVariable Integer id, Model model) {
+    var referendum = referendums.findById(id);
+
+    if (referendum.isPresent()) {
+      model.addAttribute("referendum", referendum.get());
+
+      var vm = new CastVoteForm();
+      model.addAttribute("vm", vm);
+
+    } else {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
+
+    return "referendums/vote";
+  }
+
   @PostMapping("/referendums/{id}/vote")
   public ModelAndView vote(@PathVariable Integer id, Model model, @ModelAttribute("vm") @Valid CastVoteForm vm,
       BindingResult binding) {
