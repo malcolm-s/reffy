@@ -1,11 +1,6 @@
 package com.mstone.reffy.referendum;
 
-import java.util.Collection;
-
 import javax.validation.Valid;
-
-import com.mstone.reffy.category.Category;
-import com.mstone.reffy.category.CategoryRepository;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -26,13 +21,10 @@ import lombok.extern.slf4j.Slf4j;
 public class ReferendumsController {
   private final ReferendumService referendumService;
   private final ReferendumRepository referendums;
-  private final CategoryRepository categories;
 
-  public ReferendumsController(ReferendumService referendumService, ReferendumRepository referendumRepository,
-      CategoryRepository categoryRepository) {
+  public ReferendumsController(ReferendumService referendumService, ReferendumRepository referendumRepository) {
     this.referendumService = referendumService;
     this.referendums = referendumRepository;
-    this.categories = categoryRepository;
   }
 
   @GetMapping("/referendums")
@@ -40,28 +32,6 @@ public class ReferendumsController {
     log.info("categoryId: {}", categoryId);
     model.addAttribute("referendums", referendums.findAll());
     return "referendums/index";
-  }
-
-  @ModelAttribute("categories")
-  public Collection<Category> categories() {
-    return categories.findAll();
-  }
-
-  @GetMapping("/referendums/new")
-  public String newReferendum(Model model, @ModelAttribute("vm") NewReferendumForm vm) {
-    return "referendums/new";
-  }
-
-  @PostMapping("/referendums/new")
-  public ModelAndView makeNewReferendum(@ModelAttribute("vm") @Valid NewReferendumForm vm, BindingResult binding,
-      Model model) {
-    log.info("vm: {}", vm);
-    if (binding.hasErrors()) {
-      return new ModelAndView("referendums/new", model.asMap());
-    }
-    var referendum = referendumService.saveReferendum(vm);
-    model.addAttribute("id", referendum.getId());
-    return new ModelAndView("redirect:/referendums/{id}", model.asMap());
   }
 
   @GetMapping("/referendums/{id}")
