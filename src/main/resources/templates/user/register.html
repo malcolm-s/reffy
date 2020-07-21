@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html layout:decorate="~{default}">
+  <head>
+    <title>Register</title>
+  </head>
+  <body>
+    <div layout:fragment="content">
+      <h1>Register</h1>
+      <form th:object="${vm}" method="post">
+        <div>
+          <label for="email">Email:</label>
+          <input id="email" type="email" th:field="*{email}" />
+          <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+            email errors
+          </div>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input id="password" type="password" th:field="*{password}" />
+          <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+            password errors
+          </div>
+        </div>
+        <div>
+          <label for="repeatPassword">Repeat password:</label>
+          <input
+            id="repeatPassword"
+            type="password"
+            th:field="*{repeatPassword}"
+          />
+          <div
+            th:if="${#fields.hasErrors('repeatPassword')}"
+            th:errors="*{repeatPassword}"
+          >
+            repeatPassword errors
+          </div>
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -4,7 +4,8 @@
     <title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE">Reffy</title>
   </head>
   <body>
-    <div th:replace="fragments/header :: header" />
+    <div th:replace="fragments/layout :: header" />
     <div layout:fragment="content"></div>
+    <div th:replace="fragments/layout :: footer" />
   </body>
 </html>
