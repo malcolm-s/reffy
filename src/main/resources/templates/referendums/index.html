@@ -11,11 +11,12 @@
         <li th:each="ref : ${referendums}">
           <p th:text="${ref.question}">What about this thing?</p>
           <p th:text="${ref.description}">What about this thing?</p>
-          <em
-            ><a th:href="@{/referendums/{id}(id=${ref.id})}"
-              >Read more...</a
-            ></em
-          >
+          <p>
+            <span th:each="cat : ${ref.categories}"
+              ><em th:text="${cat.name}"></em>&nbsp;</span
+            >
+          </p>
+          <a th:href="@{/referendums/{id}(id=${ref.id})}">Read more...</a>
         </li>
       </ul>
     </div>

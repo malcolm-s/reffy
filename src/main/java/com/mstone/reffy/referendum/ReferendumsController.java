@@ -29,8 +29,7 @@ public class ReferendumsController {
 
   @GetMapping("/referendums")
   public String index(Model model, @RequestParam(required = false) Integer categoryId) {
-    log.info("categoryId: {}", categoryId);
-    model.addAttribute("referendums", referendums.findAll());
+    model.addAttribute("referendums", referendums.findAllByCategoriesId(categoryId));
     return "referendums/index";
   }
 
