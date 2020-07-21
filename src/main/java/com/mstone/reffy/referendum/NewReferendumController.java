@@ -8,13 +8,13 @@ import com.mstone.reffy.category.Category;
 import com.mstone.reffy.category.CategoryRepository;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/referendums/new")
@@ -34,13 +34,13 @@ public class NewReferendumController {
 
   @PostMapping
   public ModelAndView makeNewReferendum(@ModelAttribute("vm") @Valid NewReferendumForm vm, BindingResult binding,
-      Model model) {
+      RedirectAttributes redirect) {
     if (binding.hasErrors()) {
-      return new ModelAndView("referendums/new", model.asMap());
+      return new ModelAndView("referendums/new", redirect.asMap());
     }
     var referendum = referendumService.saveReferendum(vm);
-    model.addAttribute("id", referendum.getId());
-    return new ModelAndView("redirect:/referendums/{id}", model.asMap());
+    redirect.addAttribute("id", referendum.getId());
+    return new ModelAndView("redirect:/referendums/{id}", redirect.asMap());
   }
 
   @ModelAttribute("categories")
