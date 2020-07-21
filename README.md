@@ -2,6 +2,7 @@ Ideas
 - more models
 - authentication
 - transactions
+- approval of referendums
 
 Interesting ideas
 - caching
@@ -19,6 +20,7 @@ Frustrating waste of time
 - migrations
 
 Done
+- more models
 - scheduled tasks
 - form validation
 - thymeleaf layouts
