@@ -18,18 +18,19 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-public class ReferendumsController {
+public class ReferendumController {
   private final ReferendumService referendumService;
   private final ReferendumRepository referendums;
 
-  public ReferendumsController(ReferendumService referendumService, ReferendumRepository referendumRepository) {
+  public ReferendumController(ReferendumService referendumService, ReferendumRepository referendumRepository) {
     this.referendumService = referendumService;
     this.referendums = referendumRepository;
   }
 
   @GetMapping("/referendums")
   public String index(Model model, @RequestParam(required = false) Integer categoryId) {
-    model.addAttribute("referendums", referendums.findAllByCategoriesId(categoryId));
+    var referendumsToShow = categoryId == null ? referendums.findAll() : referendums.findAllByCategoriesId(categoryId);
+    model.addAttribute("referendums", referendumsToShow);
     return "referendums/index";
   }
 
