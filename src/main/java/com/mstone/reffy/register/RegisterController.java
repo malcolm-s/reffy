@@ -23,4 +23,9 @@ public class RegisterController {
 
     return "redirect:/register/complete";
   }
+
+  @GetMapping("/register/complete")
+  public String registerComplete() {
+    return "register/complete";
+  }
 }
