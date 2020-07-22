@@ -3,6 +3,9 @@ package com.mstone.reffy.register;
 import com.mstone.reffy.user.User;
 import com.mstone.reffy.user.UserRepository;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class RegisterService {
   private final UserRepository userRepository;
 

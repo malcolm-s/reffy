@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RegisterController {
+  private final RegisterService registerService;
+
+  public RegisterController(RegisterService registerService) {
+    this.registerService = registerService;
+  }
+
   @GetMapping("/register")
   public String register(@ModelAttribute("vm") RegisterForm vm) {
     return "register/index";
@@ -20,6 +26,8 @@ public class RegisterController {
     if (binding.hasErrors()) {
       return "register/index";
     }
+
+    registerService.register(vm);
 
     return "redirect:/register/complete";
   }
