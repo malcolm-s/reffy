@@ -35,6 +35,9 @@
             repeatPassword errors
           </div>
         </div>
+        <div th:if="${#fields.hasErrors('global')}">
+          <div th:each="err : ${#fields.errors('global')}" th:text="${err}">global errors</div>
+        </div>
         <div>
           <button type="submit">Submit</button>
         </div>

@@ -2,10 +2,14 @@ package com.mstone.reffy.register;
 
 import javax.validation.constraints.NotBlank;
 
+import com.mstone.reffy.register.validation.MatchingPasswordForm;
+import com.mstone.reffy.register.validation.PasswordMatches;
+
 import lombok.Data;
 
 @Data
-public class RegisterForm {
+@PasswordMatches
+public class RegisterForm implements MatchingPasswordForm {
   @NotBlank
   private String email;
   @NotBlank
