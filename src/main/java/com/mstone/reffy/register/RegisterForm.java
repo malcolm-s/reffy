@@ -1,4 +1,4 @@
-package com.mstone.reffy.user;
+package com.mstone.reffy.register;
 
 import javax.validation.constraints.NotBlank;
 
