@@ -16,12 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.servlet.ModelAndView;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@Slf4j
 public class ReferendumVoteController {
   private final VoteService voteService;
   private final UserRepository userRepository;

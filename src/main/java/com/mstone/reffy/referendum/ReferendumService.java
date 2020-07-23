@@ -1,7 +1,6 @@
 package com.mstone.reffy.referendum;
 
 import com.mstone.reffy.email.EmailService;
-import com.mstone.reffy.vote.VoteService;
 
 import org.springframework.stereotype.Component;
 
