@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html layout:decorate="~{default}">
   <head>
-    <title th:text="${referendum.question} + ' - Reffy'">
+    <title th:text="${referendum.question}">
       Should we leave the EU?
     </title>
   </head>
@@ -22,19 +22,16 @@
         <a th:href="@{/referendums/{id}/vote(id=${referendum.id})}">here</a>
       </p>
 
-      <h2>Current standings:</h2>
-      <div>
-        Total votes: <span th:text="${referendum.totalVotes()}">155</span>
-      </div>
-
-      <div>
-        For: <span th:text="${referendum.votesForCount}">120</span> votes
-      </div>
-      <div>
-        Against: <span th:text="${referendum.votesAgainstCount}">35</span> votes
-      </div>
-
-      <p><a th:href="@{/referendums/{id}/edit(id=${referendum.id})}">Edit</a> this referendum</p>
+      <p>
+        <a th:href="@{/referendums/{id}/results(id=${referendum.id})}"
+          >View results</a
+        >
+      </p>
+      <p>
+        <a th:href="@{/referendums/{id}/edit(id=${referendum.id})}"
+          >Edit this referendum</a
+        >
+      </p>
       <p>View more <a th:href="@{/}">referendums</a></p>
     </div>
   </body>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html layout:decorate="~{default}">
+  <head>
+    <title th:text="'Results: ' + ${referendum.question}">
+      Results: Should we leave the EU?
+    </title>
+  </head>
+  <body>
+    <div layout:fragment="content">
+      <h1 th:text="${referendum.question}">When will we rejoin the EU?</h1>
+      <p th:text="${referendum.description}">
+        For a number of reasons we want to rejoin the EU.
+      </p>
+
+      <h2>Results:</h2>
+      <div>
+        Total votes: <span th:text="${referendum.totalVotes()}">155</span>
+      </div>
+
+      <div>
+        For: <span th:text="${referendum.votesForCount}">120</span> votes
+      </div>
+      <div>
+        Against: <span th:text="${referendum.votesAgainstCount}">35</span> votes
+      </div>
+
+      <p>View more <a th:href="@{/}">referendums</a></p>
+    </div>
+  </body>
+</html>

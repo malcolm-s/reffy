@@ -35,4 +35,17 @@ public class ReferendumController {
 
     return "referendums/view";
   }
+
+  @GetMapping("/referendums/{id}/results")
+  public String results(@PathVariable Integer id, Model model) {
+    var referendum = referendums.findById(id);
+
+    if (referendum.isPresent()) {
+      model.addAttribute("referendum", referendum.get());
+    } else {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
+
+    return "referendums/results";
+  }
 }
