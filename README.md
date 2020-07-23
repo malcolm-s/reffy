@@ -1,7 +1,7 @@
 Ideas
 - more models
-- transactions
 - approval of referendums
+- results page for referendums
 
 Interesting ideas
 - caching
@@ -20,6 +20,8 @@ Frustrating waste of time
 - migrations
 
 Done
+- conditional beans
+- transactions
 - application events
 - authentication
 - more models
