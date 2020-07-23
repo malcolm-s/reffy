@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.mstone.reffy.referendum.Referendum;
+import com.mstone.reffy.user.User;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -27,6 +28,11 @@ public class Vote {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "user_id")
+  @ToString.Exclude
+  private User user;
 
   @ManyToOne
   @JoinColumn(name = "referendum_id", nullable = false)
