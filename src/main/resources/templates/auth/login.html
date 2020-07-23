@@ -6,20 +6,20 @@
   <body>
     <div layout:fragment="content">
       <h1>Login</h1>
-      <form th:object="${vm}" method="post">
+      <div th:if="${param.error}">
+        Invalid username and password.
+      </div>
+      <div th:if="${param.loggedOut}">
+        You have been logged out.
+      </div>
+      <form th:action="@{/login}" method="post">
         <div>
           <label for="email">Email:</label>
-          <input id="email" type="email" th:field="*{email}" />
-          <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
-            email errors
-          </div>
+          <input id="email" name="email" type="email" />
         </div>
         <div>
           <label for="password">Password:</label>
-          <input id="password" type="password" th:field="*{password}" />
-          <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
-            password errors
-          </div>
+          <input id="password" name="password" type="password" />
         </div>
         <div>
           <button type="submit">Submit</button>
