@@ -6,6 +6,7 @@ import com.mstone.reffy.referendum.ReferendumRepository;
 import com.mstone.reffy.user.User;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +21,7 @@ public class VoteService {
     this.referendums = referendums;
   }
 
+  @Transactional
   public Vote voteFor(Referendum referendum, User user, CastVoteForm vm) {
     log.info("voting on referendum: {}, {}", referendum, vm);
 
@@ -38,10 +40,9 @@ public class VoteService {
 
   private void updateVoteCount(Referendum referendum, VoteChoice choice) {
     if (choice.equals(VoteChoice.FOR)) {
-      referendum.setVotesForCount(referendum.getVotesForCount() + 1);
+      referendums.incrementVotesForCountById(referendum.getId());
     } else {
-      referendum.setVotesAgainstCount(referendum.getVotesAgainstCount() + 1);
+      referendums.incrementVotesAgainstCountById(referendum.getId());
     }
-    referendums.save(referendum);
   }
 }
