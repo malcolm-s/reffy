@@ -5,6 +5,7 @@ import java.util.Date;
 import com.mstone.reffy.category.CategoryRepository;
 import com.mstone.reffy.referendum.ReferendumRepository;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,7 @@ public class HomeController {
     log.info("date: " + date);
     model.addAttribute("date", date);
     model.addAttribute("referendumCount", referendums.count());
-    model.addAttribute("referendums", referendums.findAll(Sort.by(Direction.DESC, "updated")));
+    model.addAttribute("referendums", referendums.findAll(PageRequest.of(0, 3, Sort.by(Direction.DESC, "updated"))));
     model.addAttribute("categories", categories.findAll());
     return "index";
   }
