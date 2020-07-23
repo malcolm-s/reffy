@@ -1,6 +1,5 @@
 Ideas
 - more models
-- authentication
 - transactions
 - approval of referendums
 
@@ -10,6 +9,7 @@ Interesting ideas
 Maybe useful ideas
 - background jobs
 - message queue / spring integration
+- csrf
 - tests
 - test coverage
 
@@ -20,6 +20,8 @@ Frustrating waste of time
 - migrations
 
 Done
+- application events
+- authentication
 - more models
 - scheduled tasks
 - form validation
