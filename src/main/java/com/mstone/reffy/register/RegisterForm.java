@@ -2,6 +2,7 @@ package com.mstone.reffy.register;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.mstone.reffy.register.validation.MatchingPasswordForm;
 import com.mstone.reffy.register.validation.PasswordMatches;
@@ -17,6 +18,7 @@ public class RegisterForm implements MatchingPasswordForm {
   @Email
   private String email;
   @NotBlank
+  @Size(min = 8, max = 30)
   private String password;
   @NotBlank
   private String repeatPassword;
