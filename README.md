@@ -6,6 +6,7 @@ Ideas
 - user roles
 - integrate with something on register (like a government service to check that an ID matches)
 - logic around referendums (dates can vote, can only vote once)
+- more validation of forms
 
 Interesting ideas
 - caching
@@ -13,7 +14,6 @@ Interesting ideas
 Maybe useful ideas
 - background jobs
 - message queue / spring integration
-- csrf
 - tests
 - test coverage
 
@@ -24,6 +24,7 @@ Frustrating waste of time
 - migrations
 
 Done
+- csrf
 - results page for referendums
 - conditional beans
 - transactions
