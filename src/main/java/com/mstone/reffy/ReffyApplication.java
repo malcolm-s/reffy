@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
@@ -23,6 +24,7 @@ public class ReffyApplication {
     var templateEngine = new SpringTemplateEngine();
     templateEngine.addTemplateResolver(templateResolver);
     templateEngine.addDialect(new LayoutDialect());
+    templateEngine.addDialect(new SpringSecurityDialect());
     return templateEngine;
   }
 }
