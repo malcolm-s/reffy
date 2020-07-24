@@ -4,7 +4,6 @@ Ideas
 - admin separation
 - email confirmation on register
 - user roles
-- integrate with something on register (like a government service to check that an ID matches)
 - logic around referendums (dates can vote, can only vote once)
 - more validation of forms
 
@@ -24,6 +23,7 @@ Frustrating waste of time
 - migrations
 
 Done
+- integrate with something on register (like a government service to check that an ID matches)
 - csrf
 - results page for referendums
 - conditional beans

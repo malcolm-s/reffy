@@ -1,6 +1,5 @@
 package com.mstone.reffy.register.validation;
 
-import javax.annotation.Resource;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
