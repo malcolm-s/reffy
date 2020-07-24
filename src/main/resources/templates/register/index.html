@@ -35,8 +35,20 @@
             repeatPassword errors
           </div>
         </div>
+        <div>
+          <label for="govId">Government ID:</label>
+          <input id="govId" type="password" th:field="*{govId}" />
+          <div>
+            <em>This is your ID that you are given from the Government</em>
+          </div>
+          <div th:if="${#fields.hasErrors('govId')}" th:errors="*{govId}">
+            govId errors
+          </div>
+        </div>
         <div th:if="${#fields.hasErrors('global')}">
-          <div th:each="err : ${#fields.errors('global')}" th:text="${err}">global errors</div>
+          <div th:each="err : ${#fields.errors('global')}" th:text="${err}">
+            global errors
+          </div>
         </div>
         <div>
           <button type="submit">Submit</button>

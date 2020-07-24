@@ -20,6 +20,7 @@ public class RegisterService {
     var user = new User();
     user.setEmail(vm.getEmail());
     user.setPassword(passwordEncoder.encode(vm.getPassword()));
+    user.setGovId(vm.getGovId());
     return userRepository.save(user);
   }
 }
