@@ -59,4 +59,9 @@ public class EditReferendumController {
   private Collection<Category> categories() {
     return categories.findAll();
   }
+
+  @ModelAttribute("referendumId")
+  private Integer referendumId(@PathVariable Integer id) {
+    return id;
+  }
 }

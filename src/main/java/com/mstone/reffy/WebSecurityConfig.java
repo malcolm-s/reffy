@@ -23,7 +23,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     http.authorizeRequests(auth -> auth.antMatchers("/referendums/{id}/vote").authenticated().anyRequest().permitAll())
         .formLogin(formLogin -> formLogin.loginPage("/login").usernameParameter("email"))
         .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login?loggedOut"))
-        .csrf(csrf -> csrf.disable());
+        .csrf();
   }
 
   @Override

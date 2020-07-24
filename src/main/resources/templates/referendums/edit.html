@@ -6,7 +6,7 @@
   <body>
     <div layout:fragment="content">
       <h1>Edit Referendum</h1>
-      <form th:object="${vm}" method="post">
+      <form th:action="@{/referendums/{id}/edit(id=${referendumId})}" th:object="${vm}" method="post">
         <div>
           <label for="question">Question:</label>
           <input id="question" type="text" th:field="*{question}" />

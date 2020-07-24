@@ -50,4 +50,9 @@ public class EditCategoryController {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
   }
+
+  @ModelAttribute("categoryId")
+  private Integer categoryId(@PathVariable Integer id) {
+    return id;
+  }
 }

@@ -6,7 +6,7 @@
   <body>
     <div layout:fragment="content">
       <h1>Register</h1>
-      <form th:object="${vm}" method="post">
+      <form th:action="@{/register}" th:object="${vm}" method="post">
         <div>
           <label for="email">Email:</label>
           <input id="email" type="email" th:field="*{email}" />
