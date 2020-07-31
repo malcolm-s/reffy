@@ -1,5 +1,4 @@
 Ideas
-- more models
 - email confirmation on register
 - user roles
 - approval of referendums
@@ -23,6 +22,8 @@ Frustrating waste of time
 - migrations
 
 Done
+- more models
+- sensible migrations
 - dynamic eager loading
 - integrate with something on register (like a government service to check that an ID matches)
 - csrf
