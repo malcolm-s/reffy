@@ -32,7 +32,8 @@ public class HomeController {
     log.info("date: " + date);
     model.addAttribute("date", date);
     model.addAttribute("referendumCount", referendums.count());
-    model.addAttribute("referendums", referendums.findAll(PageRequest.of(0, 3, Sort.by(Direction.DESC, "updated"))));
+    model.addAttribute("referendums",
+        referendums.findAllWithCategoriesBy(PageRequest.of(0, 3, Sort.by(Direction.DESC, "updated"))));
     model.addAttribute("categories", categories.findAll());
     return "index";
   }
