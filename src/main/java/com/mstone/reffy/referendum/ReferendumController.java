@@ -25,7 +25,7 @@ public class ReferendumController {
 
   @GetMapping("/referendums/{id}")
   public String view(@PathVariable Integer id, Model model) {
-    var referendum = referendums.findById(id);
+    var referendum = referendums.findWithCategoriesById(id);
 
     if (referendum.isPresent()) {
       model.addAttribute("referendum", referendum.get());

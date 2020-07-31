@@ -1,6 +1,7 @@
 package com.mstone.reffy.referendum;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +13,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface ReferendumRepository extends JpaRepository<Referendum, Integer> {
-  public List<Referendum> findAllByCategoriesId(Integer categoryId);
+  List<Referendum> findAllByCategoriesId(Integer categoryId);
 
   @Transactional
   @Modifying
@@ -24,6 +25,8 @@ public interface ReferendumRepository extends JpaRepository<Referendum, Integer>
   @Query("UPDATE Referendum r set r.votesAgainstCount = r.votesAgainstCount + 1 WHERE r.id = :id")
   void incrementVotesAgainstCountById(@Param("id") Integer id);
 
-  @EntityGraph(attributePaths = { "categories" })
   Page<Referendum> findAllWithCategoriesBy(Pageable page);
+  
+  @EntityGraph(attributePaths = { "categories" })
+  Optional<Referendum> findWithCategoriesById(Integer id);
 }
