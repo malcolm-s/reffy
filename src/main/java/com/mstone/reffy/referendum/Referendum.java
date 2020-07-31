@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -54,21 +55,24 @@ public class Referendum {
   @CreationTimestamp
   @Column
   private LocalDateTime created;
-  
+
   @UpdateTimestamp
   @Column
   private LocalDateTime updated;
 
   @Column
   private LocalDate votingOpens;
-  
+
   @Column
   private LocalDate votingCloses;
 
   @ManyToMany
   @JoinTable(joinColumns = {
-    @JoinColumn(name = "referendum_id", referencedColumnName = "id", nullable = false, updatable = false) }, inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false, updatable = false))
+      @JoinColumn(name = "referendum_id", referencedColumnName = "id", nullable = false, updatable = false) }, inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false, updatable = false))
   private Collection<Category> categories;
+
+  @OneToMany(mappedBy = "referendum", fetch = FetchType.EAGER)
+  private Collection<ReferendumState> states;
 
   public int totalVotes() {
     return this.votes.size();
