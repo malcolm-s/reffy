@@ -1,5 +1,4 @@
 Ideas
-- email confirmation on register
 - user roles
 - approval of referendums
 - logic around referendums (dates can vote, can only vote once)
@@ -22,6 +21,8 @@ Frustrating waste of time
 - migrations
 
 Done
+- fix logout
+- email confirmation on register
 - more models
 - sensible migrations
 - dynamic eager loading

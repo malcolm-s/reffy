@@ -9,4 +9,9 @@ public class AuthController {
   public String login() {
     return "auth/login";
   }
+
+  @GetMapping("/logout")
+  public String logout() {
+    return "auth/logout";
+  }
 }

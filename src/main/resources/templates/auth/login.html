@@ -9,9 +9,6 @@
       <div th:if="${param.error}">
         Invalid username and password.
       </div>
-      <div th:if="${param.loggedOut}">
-        You have been logged out.
-      </div>
       <form th:action="@{/login}" method="post">
         <div>
           <label for="email">Email:</label>
