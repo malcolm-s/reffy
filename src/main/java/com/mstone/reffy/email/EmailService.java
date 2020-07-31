@@ -1,6 +1,7 @@
 package com.mstone.reffy.email;
 
 import com.mstone.reffy.referendum.Referendum;
+import com.mstone.reffy.user.User;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -24,7 +25,6 @@ public class EmailService {
     this.fromEmail = fromEmail;
   }
 
-  @Async
   public void sendNewReferendumEmail(Referendum referendum) {
     var mailMessage = new SimpleMailMessage();
 
@@ -36,5 +36,20 @@ public class EmailService {
 
     mailer.send(mailMessage);
     log.info("sent new referendum email");
+  }
+
+  public void sendEmail(String to, String subject, String content) {
+    var mailMessage = new SimpleMailMessage();
+
+    mailMessage.setFrom(fromEmail);
+    mailMessage.setTo(to);
+    mailMessage.setSubject(subject);
+    mailMessage.setText(content);
+
+    mailer.send(mailMessage);
+  }
+
+  public void sendAdminEmail(String subject, String content) {
+    sendEmail(adminEmail, subject, content);
   }
 }
