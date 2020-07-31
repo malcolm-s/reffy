@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-public class AuthenticationListener {
+public class AuthListener {
   @EventListener
   public void onLogin(AuthenticationSuccessEvent event) {
     var token = (UsernamePasswordAuthenticationToken) event.getSource();
