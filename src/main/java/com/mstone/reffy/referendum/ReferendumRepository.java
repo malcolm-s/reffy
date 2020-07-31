@@ -27,6 +27,6 @@ public interface ReferendumRepository extends JpaRepository<Referendum, Integer>
 
   Page<Referendum> findAllWithCategoriesBy(Pageable page);
   
-  @EntityGraph(attributePaths = { "categories" })
-  Optional<Referendum> findWithCategoriesById(Integer id);
+  @EntityGraph(attributePaths = { "categories", "states" })
+  Optional<Referendum> findWithRelationsById(Integer id);
 }

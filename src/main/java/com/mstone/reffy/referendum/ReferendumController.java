@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class ReferendumController {
   private final ReferendumRepository referendums;
 
@@ -25,9 +28,10 @@ public class ReferendumController {
 
   @GetMapping("/referendums/{id}")
   public String view(@PathVariable Integer id, Model model) {
-    var referendum = referendums.findWithCategoriesById(id);
-
+    var referendum = referendums.findWithRelationsById(id);
+    
     if (referendum.isPresent()) {
+      log.info("states: {}", referendum.get().getStates());
       model.addAttribute("referendum", referendum.get());
     } else {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND);
