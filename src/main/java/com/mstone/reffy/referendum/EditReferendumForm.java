@@ -1,7 +1,7 @@
 package com.mstone.reffy.referendum;
 
 import java.time.LocalDate;
-import java.util.Collection;
+import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -28,5 +28,5 @@ public class EditReferendumForm {
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private LocalDate votingCloses;
 
-  private Collection<Category> categories;
+  private Set<Category> categories;
 }

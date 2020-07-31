@@ -2,7 +2,7 @@ package com.mstone.reffy.referendum;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Collection;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,7 +44,7 @@ public class Referendum {
 
   @OneToMany(mappedBy = "referendum")
   @ToString.Exclude
-  private Collection<Vote> votes;
+  private Set<Vote> votes;
 
   @Column
   private long votesForCount;
@@ -69,10 +69,10 @@ public class Referendum {
   @ManyToMany
   @JoinTable(joinColumns = {
       @JoinColumn(name = "referendum_id", referencedColumnName = "id", nullable = false, updatable = false) }, inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false, updatable = false))
-  private Collection<Category> categories;
+  private Set<Category> categories;
 
-  @OneToMany(mappedBy = "referendum", fetch = FetchType.EAGER)
-  private Collection<ReferendumState> states;
+  @OneToMany(mappedBy = "referendum")
+  private Set<ReferendumState> states;
 
   public int totalVotes() {
     return this.votes.size();
