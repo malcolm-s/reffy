@@ -25,7 +25,7 @@ public class ReferendumService {
   public Referendum saveReferendum(NewReferendumForm vm) {
     var referendum = referendumFromVm(vm);
     referendums.save(referendum);
-    referendumStateRepository.save(initialState());
+    referendumStateRepository.save(initialState(referendum));
     log.info("created referendum: {}", referendum);
 
     eventPublisher.publishEvent(new ReferendumCreatedEvent(referendum.getId()));
@@ -51,8 +51,9 @@ public class ReferendumService {
     return referendum;
   }
 
-  private ReferendumState initialState() {
+  private ReferendumState initialState(Referendum referendum) {
     var state = new ReferendumState();
+    state.setReferendum(referendum);
     state.setStatus(ReferendumStatus.CREATED);
     return state;
   }
