@@ -1,12 +1,10 @@
 package com.mstone.reffy.email;
 
 import com.mstone.reffy.referendum.Referendum;
-import com.mstone.reffy.user.User;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
