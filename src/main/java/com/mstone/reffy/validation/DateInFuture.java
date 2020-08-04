@@ -1,4 +1,4 @@
-package com.mstone.reffy.referendum.validation;
+package com.mstone.reffy.validation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

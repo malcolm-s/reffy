@@ -1,4 +1,4 @@
-package com.mstone.reffy.referendum.validation;
+package com.mstone.reffy.validation;
 
 import java.time.Clock;
 import java.time.LocalDate;
