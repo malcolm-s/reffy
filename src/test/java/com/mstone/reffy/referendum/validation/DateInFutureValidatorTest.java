@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Clock;
 import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.ZoneId;
 
 import org.junit.jupiter.api.Test;
@@ -16,8 +16,8 @@ public class DateInFutureValidatorTest {
     var fifthJanuary = fixedClock("2020-01-05T00:00:00.00Z");
     var sixthJanuary = fixedClock("2020-01-06T00:00:00.00Z");
     var validator = new DateInFutureValidator(fifthJanuary);
-    
-    assertTrue(validator.isValid(LocalDateTime.now(sixthJanuary), null));
+
+    assertTrue(validator.isValid(LocalDate.now(sixthJanuary), null));
   }
 
   private Clock fixedClock(String date) {
@@ -30,6 +30,14 @@ public class DateInFutureValidatorTest {
     var fifthJanuary = fixedClock("2020-01-05T00:00:00.00Z");
     var validator = new DateInFutureValidator(fifthJanuary);
 
-    assertFalse(validator.isValid(LocalDateTime.now(fourthJanuary), null));
+    assertFalse(validator.isValid(LocalDate.now(fourthJanuary), null));
+  }
+
+  @Test
+  public void isValidHandlesNull() {
+    var fifthJanuary = fixedClock("2020-01-05T00:00:00.00Z");
+    var validator = new DateInFutureValidator(fifthJanuary);
+
+    assertFalse(validator.isValid(null, null));
   }
 }
