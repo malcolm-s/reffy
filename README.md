@@ -2,7 +2,7 @@ Ideas
 - user roles
 - approval of referendums
 - logic around referendums (dates can vote, can only vote once)
-- more validation of forms
+- more validation of forms - referendums must close in the future
 - admin separation
 
 Interesting ideas
@@ -21,6 +21,7 @@ Frustrating waste of time
 - migrations
 
 Done
+- tests for existing validators
 - fix logout
 - email confirmation on register
 - more models
