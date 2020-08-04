@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.mstone.reffy.category.Category;
+import com.mstone.reffy.referendum.validation.DateInFuture;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,6 +27,7 @@ public class NewReferendumForm {
 
   @NotNull
   @DateTimeFormat(pattern = "yyyy-MM-dd")
+  @DateInFuture
   private LocalDate votingCloses;
 
   private Set<Category> categories;
