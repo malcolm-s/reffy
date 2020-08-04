@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.mstone.reffy.category.Category;
+import com.mstone.reffy.referendum.state.ReferendumState;
 import com.mstone.reffy.vote.Vote;
 
 import org.hibernate.annotations.CreationTimestamp;

@@ -2,8 +2,8 @@ package com.mstone.reffy.migrations.upgrades;
 
 import com.mstone.reffy.migrations.Migration;
 import com.mstone.reffy.referendum.ReferendumRepository;
-import com.mstone.reffy.referendum.ReferendumStateService;
-import com.mstone.reffy.referendum.ReferendumStatus;
+import com.mstone.reffy.referendum.state.ReferendumStateService;
+import com.mstone.reffy.referendum.state.ReferendumStatus;
 
 import org.springframework.stereotype.Component;
 

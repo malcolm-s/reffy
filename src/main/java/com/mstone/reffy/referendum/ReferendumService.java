@@ -2,6 +2,9 @@ package com.mstone.reffy.referendum;
 
 import javax.transaction.Transactional;
 
+import com.mstone.reffy.referendum.state.ReferendumStateService;
+import com.mstone.reffy.referendum.state.ReferendumStatus;
+
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 

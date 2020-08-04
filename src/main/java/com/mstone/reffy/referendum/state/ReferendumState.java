@@ -1,4 +1,4 @@
-package com.mstone.reffy.referendum;
+package com.mstone.reffy.referendum.state;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.mstone.reffy.referendum.Referendum;
 
 import org.hibernate.annotations.CreationTimestamp;
 

@@ -1,4 +1,6 @@
-package com.mstone.reffy.referendum;
+package com.mstone.reffy.referendum.state;
+
+import com.mstone.reffy.referendum.Referendum;
 
 import org.springframework.stereotype.Component;
 
