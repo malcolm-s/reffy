@@ -1,10 +1,8 @@
 package com.mstone.reffy.register.validation;
 
+import com.mstone.reffy.govid.GovIdService;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
-import com.mstone.reffy.govid.GovIdService;
-
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

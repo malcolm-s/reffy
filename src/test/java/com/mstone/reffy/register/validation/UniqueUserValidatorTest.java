@@ -5,12 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-import java.util.Optional;
-
 import com.mstone.reffy.register.RegisterForm;
 import com.mstone.reffy.user.User;
 import com.mstone.reffy.user.UserRepository;
-
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,6 +19,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 public class UniqueUserValidatorTest {
   @Mock
   private UserRepository userRepository;
+
   @InjectMocks
   private UniqueUserValidator validator;
 

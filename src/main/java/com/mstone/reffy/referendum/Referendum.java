@@ -1,9 +1,11 @@
 package com.mstone.reffy.referendum;
 
+import com.mstone.reffy.category.Category;
+import com.mstone.reffy.referendum.state.ReferendumState;
+import com.mstone.reffy.vote.Vote;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,17 +16,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-
-import com.mstone.reffy.category.Category;
-import com.mstone.reffy.referendum.state.ReferendumState;
-import com.mstone.reffy.vote.Vote;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Setter
@@ -67,8 +63,22 @@ public class Referendum {
   private LocalDate votingCloses;
 
   @ManyToMany
-  @JoinTable(joinColumns = {
-      @JoinColumn(name = "referendum_id", referencedColumnName = "id", nullable = false, updatable = false) }, inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false, updatable = false))
+  @JoinTable(
+    joinColumns = {
+      @JoinColumn(
+        name = "referendum_id",
+        referencedColumnName = "id",
+        nullable = false,
+        updatable = false
+      )
+    },
+    inverseJoinColumns = @JoinColumn(
+      name = "category_id",
+      referencedColumnName = "id",
+      nullable = false,
+      updatable = false
+    )
+  )
   private Set<Category> categories;
 
   @OneToMany(mappedBy = "referendum")

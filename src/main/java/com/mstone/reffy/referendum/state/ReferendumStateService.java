@@ -1,10 +1,8 @@
 package com.mstone.reffy.referendum.state;
 
 import com.mstone.reffy.referendum.Referendum;
-
-import org.springframework.stereotype.Component;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor

@@ -1,12 +1,9 @@
 package com.mstone.reffy.referendum;
 
-import java.util.Collection;
-
-import javax.validation.Valid;
-
 import com.mstone.reffy.category.Category;
 import com.mstone.reffy.category.CategoryRepository;
-
+import java.util.Collection;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,8 +21,11 @@ public class EditReferendumController {
   private final ReferendumRepository referendums;
   private final CategoryRepository categories;
 
-  public EditReferendumController(ReferendumService referendumService, ReferendumRepository referendumRepository,
-      CategoryRepository categories) {
+  public EditReferendumController(
+    ReferendumService referendumService,
+    ReferendumRepository referendumRepository,
+    CategoryRepository categories
+  ) {
     this.referendumService = referendumService;
     this.referendums = referendumRepository;
     this.categories = categories;
@@ -33,26 +33,39 @@ public class EditReferendumController {
 
   @GetMapping
   public String edit(@PathVariable Integer id, @ModelAttribute("vm") EditReferendumForm vm) {
-    return referendums.findById(id).map(r -> {
-      vm.setQuestion(r.getQuestion());
-      vm.setDescription(r.getDescription());
-      vm.setVotingOpens(r.getVotingOpens());
-      vm.setVotingCloses(r.getVotingCloses());
-      vm.setCategories(r.getCategories());
-      return "referendums/edit";
-    }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    return referendums
+      .findById(id)
+      .map(
+        r -> {
+          vm.setQuestion(r.getQuestion());
+          vm.setDescription(r.getDescription());
+          vm.setVotingOpens(r.getVotingOpens());
+          vm.setVotingCloses(r.getVotingCloses());
+          vm.setCategories(r.getCategories());
+          return "referendums/edit";
+        }
+      )
+      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
   }
 
   @PostMapping
-  public String doEdit(@PathVariable Integer id, @ModelAttribute("vm") @Valid EditReferendumForm vm,
-      BindingResult binding) {
+  public String doEdit(
+    @PathVariable Integer id,
+    @ModelAttribute("vm") @Valid EditReferendumForm vm,
+    BindingResult binding
+  ) {
     if (binding.hasErrors()) {
       return "referendums/edit";
     }
-    return referendums.findById(id).map(r -> {
-      referendumService.editReferendum(r, vm);
-      return "redirect:/referendums/{id}";
-    }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    return referendums
+      .findById(id)
+      .map(
+        r -> {
+          referendumService.editReferendum(r, vm);
+          return "redirect:/referendums/{id}";
+        }
+      )
+      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
   }
 
   @ModelAttribute("categories")

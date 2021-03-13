@@ -1,7 +1,6 @@
 package com.mstone.reffy;
 
 import com.mstone.reffy.auth.ReffyUserDetailsService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,10 +19,13 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.authorizeRequests(auth -> auth.antMatchers("/referendums/{id}/vote").authenticated().anyRequest().permitAll())
-        .formLogin(formLogin -> formLogin.loginPage("/login").usernameParameter("email"))
-        .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login?loggedOut"))
-        .csrf();
+    http
+      .authorizeRequests(
+        auth -> auth.antMatchers("/referendums/{id}/vote").authenticated().anyRequest().permitAll()
+      )
+      .formLogin(formLogin -> formLogin.loginPage("/login").usernameParameter("email"))
+      .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login?loggedOut"))
+      .csrf();
   }
 
   @Override

@@ -1,12 +1,9 @@
 package com.mstone.reffy.referendum;
 
-import java.util.Collection;
-
-import javax.validation.Valid;
-
 import com.mstone.reffy.category.Category;
 import com.mstone.reffy.category.CategoryRepository;
-
+import java.util.Collection;
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +19,10 @@ public class NewReferendumController {
   private final ReferendumService referendumService;
   private final CategoryRepository categories;
 
-  public NewReferendumController(ReferendumService referendumService, CategoryRepository categories) {
+  public NewReferendumController(
+    ReferendumService referendumService,
+    CategoryRepository categories
+  ) {
     this.referendumService = referendumService;
     this.categories = categories;
   }
@@ -33,8 +33,11 @@ public class NewReferendumController {
   }
 
   @PostMapping
-  public ModelAndView makeNewReferendum(@ModelAttribute("vm") @Valid NewReferendumForm vm, BindingResult binding,
-      RedirectAttributes redirect) {
+  public ModelAndView makeNewReferendum(
+    @ModelAttribute("vm") @Valid NewReferendumForm vm,
+    BindingResult binding,
+    RedirectAttributes redirect
+  ) {
     if (binding.hasErrors()) {
       return new ModelAndView("referendums/new", redirect.asMap());
     }

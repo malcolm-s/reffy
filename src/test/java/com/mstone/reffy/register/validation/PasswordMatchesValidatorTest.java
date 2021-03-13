@@ -16,31 +16,43 @@ public class PasswordMatchesValidatorTest {
 
   @Test
   public void isValidReturnsTrueWhenPasswordsMatch() {
-    assertTrue(validator.isValid(new MatchingPasswordForm() {
-      @Override
-      public String getPassword() {
-        return "asdf";
-      }
+    assertTrue(
+      validator.isValid(
+        new MatchingPasswordForm() {
 
-      @Override
-      public String getRepeatPassword() {
-        return "asdf";
-      }
-    }, null));
+          @Override
+          public String getPassword() {
+            return "asdf";
+          }
+
+          @Override
+          public String getRepeatPassword() {
+            return "asdf";
+          }
+        },
+        null
+      )
+    );
   }
 
   @Test
   public void isValidReturnsFalseWhenPasswordsMatch() {
-    assertFalse(validator.isValid(new MatchingPasswordForm() {
-      @Override
-      public String getPassword() {
-        return "asdf";
-      }
+    assertFalse(
+      validator.isValid(
+        new MatchingPasswordForm() {
 
-      @Override
-      public String getRepeatPassword() {
-        return "asd";
-      }
-    }, null));
+          @Override
+          public String getPassword() {
+            return "asdf";
+          }
+
+          @Override
+          public String getRepeatPassword() {
+            return "asd";
+          }
+        },
+        null
+      )
+    );
   }
 }

@@ -2,12 +2,10 @@ package com.mstone.reffy.register;
 
 import com.mstone.reffy.user.User;
 import com.mstone.reffy.user.UserRepository;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor

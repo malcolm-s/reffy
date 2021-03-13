@@ -1,23 +1,19 @@
 package com.mstone.reffy.user;
 
+import com.mstone.reffy.vote.Vote;
 import java.time.LocalDateTime;
 import java.util.Collection;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import com.mstone.reffy.vote.Vote;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Setter
@@ -40,7 +36,7 @@ public class User {
   @CreationTimestamp
   @Column
   private LocalDateTime created;
-  
+
   @UpdateTimestamp
   @Column
   private LocalDateTime updated;

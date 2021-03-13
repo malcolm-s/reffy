@@ -1,7 +1,7 @@
 package com.mstone.reffy;
 
 import java.time.Clock;
-
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -11,12 +11,11 @@ import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
-import nz.net.ultraq.thymeleaf.LayoutDialect;
-
 @SpringBootApplication
 @EnableAsync
 @EnableScheduling
 public class ReffyApplication {
+
   public static void main(String[] args) {
     SpringApplication.run(ReffyApplication.class, args);
   }

@@ -1,7 +1,6 @@
 package com.mstone.reffy.category;
 
 import javax.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +23,10 @@ public class NewCategoryController {
   }
 
   @PostMapping
-  public String makeNewCategory(@ModelAttribute("vm") @Valid NewCategoryForm vm, BindingResult binding) {
+  public String makeNewCategory(
+    @ModelAttribute("vm") @Valid NewCategoryForm vm,
+    BindingResult binding
+  ) {
     if (binding.hasErrors()) {
       return "category/new";
     }

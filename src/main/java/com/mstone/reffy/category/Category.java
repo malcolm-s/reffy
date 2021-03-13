@@ -1,16 +1,13 @@
 package com.mstone.reffy.category;
 
+import com.mstone.reffy.referendum.Referendum;
 import java.util.Collection;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-
-import com.mstone.reffy.referendum.Referendum;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

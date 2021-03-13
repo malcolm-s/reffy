@@ -1,16 +1,12 @@
 package com.mstone.reffy.referendum;
 
+import com.mstone.reffy.category.Category;
 import java.time.LocalDate;
 import java.util.Set;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
-import com.mstone.reffy.category.Category;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 public class EditReferendumForm {

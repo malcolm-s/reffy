@@ -2,10 +2,8 @@ package com.mstone.reffy.validation;
 
 import java.time.Clock;
 import java.time.LocalDate;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

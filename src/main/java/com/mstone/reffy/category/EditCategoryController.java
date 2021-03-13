@@ -1,7 +1,6 @@
 package com.mstone.reffy.category;
 
 import javax.validation.Valid;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -36,8 +35,11 @@ public class EditCategoryController {
   }
 
   @PostMapping
-  public String doEditCategory(@PathVariable Integer id, @ModelAttribute("vm") @Valid EditCategoryForm vm,
-      BindingResult binding) {
+  public String doEditCategory(
+    @PathVariable Integer id,
+    @ModelAttribute("vm") @Valid EditCategoryForm vm,
+    BindingResult binding
+  ) {
     var category = categories.findById(id);
 
     if (category.isPresent()) {

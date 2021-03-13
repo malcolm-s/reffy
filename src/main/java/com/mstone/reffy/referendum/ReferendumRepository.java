@@ -2,7 +2,6 @@ package com.mstone.reffy.referendum;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -26,7 +25,7 @@ public interface ReferendumRepository extends JpaRepository<Referendum, Integer>
   void incrementVotesAgainstCountById(@Param("id") Integer id);
 
   Page<Referendum> findAllWithCategoriesBy(Pageable page);
-  
+
   @EntityGraph(attributePaths = { "categories", "states" })
   Optional<Referendum> findWithRelationsById(Integer id);
 }

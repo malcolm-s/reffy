@@ -1,19 +1,20 @@
 package com.mstone.reffy.reporting;
 
+import com.mstone.reffy.vote.VoteRepository;
 import java.time.Duration;
 import java.time.LocalDateTime;
-
-import com.mstone.reffy.vote.VoteRepository;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Component
 @Slf4j
-@ConditionalOnProperty(value = "reffy.reporting.enabled", matchIfMissing = false, havingValue = "true")
+@ConditionalOnProperty(
+  value = "reffy.reporting.enabled",
+  matchIfMissing = false,
+  havingValue = "true"
+)
 public class VotingReporter {
   private final VoteRepository votes;
 

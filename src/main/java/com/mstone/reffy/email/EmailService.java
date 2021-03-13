@@ -1,13 +1,11 @@
 package com.mstone.reffy.email;
 
 import com.mstone.reffy.referendum.Referendum;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
@@ -16,8 +14,11 @@ public class EmailService {
   private final String adminEmail;
   private final String fromEmail;
 
-  public EmailService(JavaMailSender mailer, @Value("${reffy.admin.email}") String adminEmail,
-      @Value("${reffy.email.from}") String fromEmail) {
+  public EmailService(
+    JavaMailSender mailer,
+    @Value("${reffy.admin.email}") String adminEmail,
+    @Value("${reffy.email.from}") String fromEmail
+  ) {
     this.mailer = mailer;
     this.adminEmail = adminEmail;
     this.fromEmail = fromEmail;
@@ -29,8 +30,13 @@ public class EmailService {
     mailMessage.setFrom(fromEmail);
     mailMessage.setTo(adminEmail);
     mailMessage.setSubject("New referendum: " + referendum.getQuestion());
-    mailMessage.setText(String.format("A new referendum was created:\n\n%s\n\n%s", referendum.getQuestion(),
-        referendum.getDescription()));
+    mailMessage.setText(
+      String.format(
+        "A new referendum was created:\n\n%s\n\n%s",
+        referendum.getQuestion(),
+        referendum.getDescription()
+      )
+    );
 
     mailer.send(mailMessage);
     log.info("sent new referendum email");

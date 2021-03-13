@@ -1,5 +1,6 @@
 package com.mstone.reffy.referendum;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
@@ -21,7 +20,9 @@ public class ReferendumController {
 
   @GetMapping("/referendums")
   public String index(Model model, @RequestParam(required = false) Integer categoryId) {
-    var referendumsToShow = categoryId == null ? referendums.findAll() : referendums.findAllByCategoriesId(categoryId);
+    var referendumsToShow = categoryId == null
+      ? referendums.findAll()
+      : referendums.findAllByCategoriesId(categoryId);
     model.addAttribute("referendums", referendumsToShow);
     return "referendums/index";
   }
@@ -29,7 +30,7 @@ public class ReferendumController {
   @GetMapping("/referendums/{id}")
   public String view(@PathVariable Integer id, Model model) {
     var referendum = referendums.findWithRelationsById(id);
-    
+
     if (referendum.isPresent()) {
       log.info("states: {}", referendum.get().getStates());
       model.addAttribute("referendum", referendum.get());

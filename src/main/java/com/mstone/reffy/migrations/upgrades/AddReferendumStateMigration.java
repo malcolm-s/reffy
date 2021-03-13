@@ -4,11 +4,9 @@ import com.mstone.reffy.migrations.Migration;
 import com.mstone.reffy.referendum.ReferendumRepository;
 import com.mstone.reffy.referendum.state.ReferendumStateService;
 import com.mstone.reffy.referendum.state.ReferendumStatus;
-
-import org.springframework.stereotype.Component;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j

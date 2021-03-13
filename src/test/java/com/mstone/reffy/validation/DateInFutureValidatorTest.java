@@ -7,10 +7,10 @@ import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-
 import org.junit.jupiter.api.Test;
 
 public class DateInFutureValidatorTest {
+
   @Test
   public void isValidReturnsTrueWhenPasswordsMatch() {
     var fifthJanuary = fixedClock("2020-01-05T00:00:00.00Z");

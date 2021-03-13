@@ -1,12 +1,9 @@
 package com.mstone.reffy.referendum;
 
-import java.security.Principal;
-
-import javax.validation.Valid;
-
 import com.mstone.reffy.user.UserRepository;
 import com.mstone.reffy.vote.VoteService;
-
+import java.security.Principal;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +20,11 @@ public class ReferendumVoteController {
   private final UserRepository userRepository;
   private final ReferendumRepository referendums;
 
-  public ReferendumVoteController(VoteService voteService, ReferendumRepository referendumRepository,
-      UserRepository userRepository) {
+  public ReferendumVoteController(
+    VoteService voteService,
+    ReferendumRepository referendumRepository,
+    UserRepository userRepository
+  ) {
     this.voteService = voteService;
     this.referendums = referendumRepository;
     this.userRepository = userRepository;
@@ -36,8 +36,13 @@ public class ReferendumVoteController {
   }
 
   @PostMapping("/referendums/{id}/vote")
-  public String vote(@PathVariable Integer id, Model model, @ModelAttribute("vm") @Valid CastVoteForm vm,
-      BindingResult binding, Principal principal) {
+  public String vote(
+    @PathVariable Integer id,
+    Model model,
+    @ModelAttribute("vm") @Valid CastVoteForm vm,
+    BindingResult binding,
+    Principal principal
+  ) {
     if (binding.hasErrors()) {
       return "referendums/vote";
     }
@@ -50,6 +55,8 @@ public class ReferendumVoteController {
 
   @ModelAttribute("referendum")
   private Referendum referendum(@PathVariable Integer id) {
-    return referendums.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    return referendums
+      .findById(id)
+      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
   }
 }

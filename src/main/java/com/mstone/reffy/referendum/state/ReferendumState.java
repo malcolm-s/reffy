@@ -1,7 +1,7 @@
 package com.mstone.reffy.referendum.state;
 
+import com.mstone.reffy.referendum.Referendum;
 import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,17 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.mstone.reffy.referendum.Referendum;
-
-import org.hibernate.annotations.CreationTimestamp;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.With;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Getter
@@ -40,7 +36,8 @@ public class ReferendumState {
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
-  private @With ReferendumStatus status;
+  @With
+  private ReferendumStatus status;
 
   @ManyToOne
   @JoinColumn(name = "referendum_id", nullable = false)

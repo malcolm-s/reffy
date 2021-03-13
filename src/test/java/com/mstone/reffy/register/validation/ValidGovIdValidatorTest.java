@@ -6,7 +6,6 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 import com.mstone.reffy.govid.GovIdService;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,13 +16,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 public class ValidGovIdValidatorTest {
   @Mock
   private GovIdService govIdService;
+
   @InjectMocks
   private ValidGovIdValidator validator;
 
   @Test
   public void isValidReturnsTrueWhenMatchingGovIdExists() {
     when(govIdService.isValidGovId(anyString())).thenReturn(true);
-    
+
     assertTrue(validator.isValid("1234", null));
   }
 

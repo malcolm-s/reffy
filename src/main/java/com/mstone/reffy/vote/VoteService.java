@@ -4,10 +4,8 @@ import com.mstone.reffy.referendum.CastVoteForm;
 import com.mstone.reffy.referendum.Referendum;
 import com.mstone.reffy.referendum.ReferendumRepository;
 import com.mstone.reffy.user.User;
-
-import org.springframework.stereotype.Component;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j

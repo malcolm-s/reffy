@@ -1,11 +1,9 @@
 package com.mstone.reffy.register.validation;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 import com.mstone.reffy.register.RegisterForm;
 import com.mstone.reffy.user.UserRepository;
-
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
