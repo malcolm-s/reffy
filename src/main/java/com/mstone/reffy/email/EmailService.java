@@ -24,24 +24,6 @@ public class EmailService {
     this.fromEmail = fromEmail;
   }
 
-  public void sendNewReferendumEmail(Referendum referendum) {
-    var mailMessage = new SimpleMailMessage();
-
-    mailMessage.setFrom(fromEmail);
-    mailMessage.setTo(adminEmail);
-    mailMessage.setSubject("New referendum: " + referendum.getQuestion());
-    mailMessage.setText(
-      String.format(
-        "A new referendum was created:\n\n%s\n\n%s",
-        referendum.getQuestion(),
-        referendum.getDescription()
-      )
-    );
-
-    mailer.send(mailMessage);
-    log.info("sent new referendum email");
-  }
-
   public void sendEmail(String to, String subject, String content) {
     var mailMessage = new SimpleMailMessage();
 
