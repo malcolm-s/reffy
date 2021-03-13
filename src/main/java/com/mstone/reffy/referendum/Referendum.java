@@ -84,7 +84,7 @@ public class Referendum {
   @OneToMany(mappedBy = "referendum")
   private Set<ReferendumState> states;
 
-  public int totalVotes() {
-    return this.votes.size();
+  public long totalVotes() {
+    return votesForCount + votesAgainstCount;
   }
 }
