@@ -1,13 +1,10 @@
 package com.mstone.reffy.referendum;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import java.security.Principal;
-
 import com.mstone.reffy.user.UserRepository;
 import com.mstone.reffy.vote.VoteRepository;
-
+import java.security.Principal;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,11 +29,11 @@ public class ReferendumController {
     model.addAttribute("referendums", referendumsToShow);
     return "referendums/index";
   }
-  
+
   @GetMapping("/referendums/{id}")
   public String view(@PathVariable Integer id, Model model, Principal principal) {
     var referendum = referendums.findWithRelationsById(id);
-    
+
     if (referendum.isPresent()) {
       model.addAttribute("referendum", referendum.get());
       var user = users.findByEmail(principal.getName());
