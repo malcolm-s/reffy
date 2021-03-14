@@ -1,6 +1,13 @@
 package com.mstone.reffy.referendum;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import java.security.Principal;
+
+import com.mstone.reffy.user.UserRepository;
+import com.mstone.reffy.vote.VoteRepository;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +18,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Controller
 @Slf4j
+@RequiredArgsConstructor
 public class ReferendumController {
   private final ReferendumRepository referendums;
-
-  public ReferendumController(ReferendumRepository referendumRepository) {
-    this.referendums = referendumRepository;
-  }
+  private final VoteRepository votes;
+  private final UserRepository users;
 
   @GetMapping("/referendums")
   public String index(Model model, @RequestParam(required = false) Integer categoryId) {
@@ -26,14 +32,15 @@ public class ReferendumController {
     model.addAttribute("referendums", referendumsToShow);
     return "referendums/index";
   }
-
+  
   @GetMapping("/referendums/{id}")
-  public String view(@PathVariable Integer id, Model model) {
+  public String view(@PathVariable Integer id, Model model, Principal principal) {
     var referendum = referendums.findWithRelationsById(id);
-
+    
     if (referendum.isPresent()) {
-      log.info("states: {}", referendum.get().getStates());
       model.addAttribute("referendum", referendum.get());
+      var user = users.findByEmail(principal.getName());
+      model.addAttribute("hasVoted", votes.existsByUserAndReferendum(user.get(), referendum.get()));
     } else {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }

@@ -17,7 +17,10 @@
         <li th:each="cat : ${referendum.categories}" th:text="${cat.name}"></li>
       </ul>
 
-      <p>
+      <p th:if="${hasVoted}">
+        You've voted already.
+      </p>
+      <p th:unless="${hasVoted}">
         Cast your vote
         <a th:href="@{/referendums/{id}/vote(id=${referendum.id})}">here</a>
       </p>
